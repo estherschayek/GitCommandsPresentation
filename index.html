@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Git Commands Presentation</title>
+		<meta name="author" content="Esther Schayek">
+
+		
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<a href="https://revealjs.com">
+						<img src="https://static.slid.es/reveal/logo-v1/reveal-white-text.svg" alt="reveal.js logo" style="height: 180px; margin: 0 auto 4rem auto; background: transparent;" class="demo-logo">
+					</a>
+					<h3>The Git Commands Presentation Framework</h3>
+					<p>
+						<small>Created by Esther Schayek</small>
+					</p>
+				</section>
+				<!-- Introduction -->
+				<section>
+					<p>In this presentation,
+						 we will explore essential Git commands,
+						  providing a comprehensive overview of their functionality.</p> 
+					<p> We will focus on specific use cases, 
+						  highlight their advantages and disadvantages through practical coding examples, 
+						  and introduce alternative and complementary commands to each one of them.
+					</p>
+				</section>
+				<!-- Git commit message -->
+				<section>
+					<section>
+						<h2>Git commit message</h2>
+						<p>To write a great git commit message, take a look at these guidelines and suggestions.</p>
+					</section>
+					<section>
+						<h3>Why a good commit message is important?</h3>
+						<p>By writing good commits, you are simply future-proofing yourself. You could save yourself and/or coworkers hours of digging around while troubleshooting by providing that helpful description.</p>
+						<p>The extra time it takes to write a thoughtful commit message as a letter to your potential future self is extremely worthwhile. On large scale projects, documentation is imperative for maintenance.</p>
+					  
+					</section>
+					<section>
+						<h4 data-id="code-title">The Anatomy of a Commit Message</h2>
+							
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers><script type="text/template">
+						   Basic:
+                           git commit -m <message>
+                           Detailed:
+                           git commit -m <title> -m <description>
+
+						   </script></code></pre>
+					</section>
+					<section>
+						<h3>Begin with a short summary line</h3>
+						<p>Begin with a short summary line - message subject</p>
+						<ul>
+							<li>Start with an imperative present active verb: Add, Drop, Fix, Refactor, Optimize, etc.</li>
+							<li>Use up to 50 characters; this is the git official preference</li>
+							<li>Finish without a sentence-ending period.</li>
+						</ul>
+						<h4 data-id="code-title">Examples:</h2>
+						<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+								Add foo
+								Drop foo
+								Fix foo
+								Refactor foo
+								Optimize foo
+						</code></pre>
+					</section>
+					<section>
+						<h3>Continue with a longer description</h3>
+						<p>Continue with a longer description - message body:</p>
+						<ul>
+						  <li>Add a blank line after the summary line, then write as much as you want.</li>
+                          <li>Use up to 72 characters per line for typical text for word wrap.</li>
+                          <li>Use as many characters as needed for atypical text, such as URLs, terminal output, formatted messages, etc.</li>
+                          <li>Include any kind of notes, links, examples, etc. as you want.</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Summary keywords</h3>
+                        <p>We recommend these summary keywords because they use imperative mood, present tense, active voice, and are verbs:</p>
+                          <ul>
+							<li style="font-size: 16px;">Add: Create a capability e.g. feature, test, dependency.</li>
+						    <li style="font-size: 16px;">Drop: Delete a capability e.g. feature, test, dependency.</li>
+							<li style="font-size: 16px;">Fix: Fix an issue e.g. bug, typo, accident, misstatement.</li>
+							<li style="font-size: 16px;">Bump: Increase the version of something e.g. a dependency.</li>
+							<li style="font-size: 16px;">Make: Change the build process, or tools, or infrastructure.</li>
+							<li style="font-size: 16px;">Start: Begin doing something; e.g. enable a toggle, feature flag, etc.</li>
+							<li style="font-size: 16px;">Stop: End doing something; e.g. disable a toggle, feature flag, etc.</li>
+							<li style="font-size: 16px;">Optimize: A change that MUST be just about performance, e.g. speed up code.</li>
+							<li style="font-size: 16px;">Document: A change that MUST be only in the documentation, e.g. help files.</li>
+							<li style="font-size: 16px;">Refactor: A change that MUST be just a refactoring patch</li>
+							<li style="font-size: 16px;">Reformat: A change that MUST be just a formatting patch, e.g. change spaces.</li>
+							<li style="font-size: 16px;">Rearrange: A change that MUST be just an arranging patch, e.g. change layout.</li>
+							<li style="font-size: 16px;">Redraw: A change that MUST be just a drawing patch, e.g. change a graphic, image, icon, etc.</li>
+						    <li style="font-size: 16px;">Reword: A change that MUST be just a wording patch, e.g. change a comment, label, doc, etc.</li>
+							<li style="font-size: 16px;">Revise: A change that MUST be just a revising patch e.g. a change, an alteration, a correction, etc.</li>
+							<li style="font-size: 16px;">Refit/Refresh/Renew/Reload: A change that MUST be just a patch e.g. update test data, API keys, etc.</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Specifics for right and wrong</h3>
+						<table style="font-size:medium;">
+							<thead><tr>
+								<th>Case</th>
+								<th>Right</th>
+								<th>Wrong</th>
+							</tr></thead>
+							<tbody><tr>
+								<td>Capitalize the summary.</td>
+								<td>Add feature</td>
+								<td>add feature</td>
+							</tr>
+							<tr>
+								<td>Finish the summary</td>
+								<td>Add feature</td>
+								<td>Add feature.</td>
+							</tr>
+							
+							<tr>
+								<td>The summary ends with an non-sentence-ending period</td>
+								<td>Add feature for U.S.A.</td>
+								<td>Add feature for U.S.A</td>
+							</tr>
+							<tr>
+								<td>Use imperative mood:</td>
+								<td>Add feature</td>
+								<td>Adds feature/Adding feature/Added feature</td>
+							</tr>
+						</tbody>
+						</table>
+					</section>
+					<section>
+						<h3>Specifics for length</h3>
+						<dl style="font-size: medium;">
+							<dt>Keep the summary line within 50 characters.</dt>
+							<dd>- The purpose is easy readability.</dd>
+							<dd>- This is the git official convention.</dd>
+							<dd>- This is the same convention as writing an email message.</dd>
+							<dt>Use a blank line after the summary line.</dt>
+							<dd>- The purpose is making the commit message parseable by tools.</dd>
+						    <dd>- This is the git official convention.</dd>
+						    <dd>- This is the same convention as writing an email message.</dd>
+						    <dt>Use up to 72 characters per line for typical text for word wrap.</dt>
+							<dd>- The purpose is easy readability on typical terminals.</dd>
+							<dd>- This is the git official convention.</dd>
+							<dd>- This is the same convention as writing an email message.</dd>
+							<dt>Use as many characters as needed for atypical text, such as URLs, output, formatted messages, etc.</dt>
+							<dd>- The purpose is preserving important formatting.</dd>
+							<dd>- This is the git official convention.</dd>
+							<dd>- This is the same convention as writing an email message.</dd>
+						</dl>
+
+					</section>
+					<section>
+						<h3>Rejected format</h3>
+						<ol style="font-size: medium;">
+							<li>
+								We reject git commit message styles that put meta-information into the summary line.
+								<h4 data-id="code-title" >Examples:</h2>
+									<pre data-id="code-animation" style="font-size: larger;"><code  class="hljs javascript" data-trim data-line-numbers>
+										[bug] ...
+										(release) ...
+										#12345 ...
+										docs: ...
+										JIRA-666 #time 1w 2d 4h 30m #comment Task completed ahead of schedule #resolve
+										
+									</code></pre>
+							</li>
+							<li>We reject the git commit message style of projects such as Angular, Commitizen defaults, etc.
+								Instead we use "Add" for adding a feature, "Document" for documenting help, "Optimize" for performance improvement, etc.
+							</li>
+							<li>We reject using a ticket id number in the summary line.
+								Instead, we use fully-qualified URLs in the commit message body.
+							</li>
+							<li>We reject using a time tracking syntax in the summary line.
+								Instead, if you want time tracking, put the info in the commit message body.
+								This is because your personal time tracking is irrelevant to most other developers.
+							</li>
+						
+						</ol>
+					</section>
+					<section>
+						<h3>Conclusion</h3>
+						<p style="font-size: 28px;">Writing good commit messages is an extremely beneficial skill to develop, and it helps you communicate and collaborate with your team. Commits serve as an archive of changes. They can become an ancient manuscript to help us decipher the past, and make reasoned decisions in the future.</p>
+						<p style="font-size: 28px;">There is an existing set of agreed-upon standards we can follow, but as long as your team agrees upon a convention that is descriptive with future readers in mind, there will undoubtedly be long-term benefits.</p>
+					</section>
+				</section>
+				<!-- Git pre-commit hook -->
+				<section>
+					<section>
+						<h2>git pre-commit hook </h2>
+						<p>The pre-commit hook is executed just before a commit is made. It allows you to inspect the changes that are about to be committed and possibly reject the commit if certain conditions are not met.</p>
+					</section>
+					<section>
+						<h3>Common use cases</h3>
+						<ul>
+							<li>running linters</li>
+							<li>code formatting checks</li>
+							<li>static analysis tools</li>
+							<li>to improve  git workflow and supercharge the development</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Git pre-commit's pros</h3>
+						<dl style="font-size: 28px;">
+							<dt>Automated Code Quality Checks:</dt>
+							<dd>Pre-commit hooks can run linters, formatters, or other code quality tools to ensure that the code adheres to certain standards before it gets committed.</dd>
+							<dt>Error Prevention:</dt>
+							<dd>By catching errors or issues before the commit, pre-commit hooks can prevent problematic code from being committed, which can save time in the long run by reducing the need for later fixes.</dd>
+							<dt>Customizable:</dt>
+							<dd> Pre-commit hooks are highly customizable, allowing you to define exactly which checks should be performed and how they should be executed.</dd>
+							<dt>Improves Code Review:</dt>
+							<dd>Since code is checked before committing, code reviews can focus more on logic and functionality rather than style and trivial issues.</dd>
+						</dl>
+					</section>
+					<section>
+						<h3>Git pre-commit's cons</h3>
+						<dl style="font-size: 28px;">
+							<dt>Performance Overhead:</dt>
+							<dd>Pre-commit hooks can introduce delays in the commit process, especially if they involve resource-intensive operations like running a full suite of tests or linting large files.</dd>
+						    <dt>Complexity:</dt>
+							<dd>Configuring and maintaining pre-commit hooks can add complexity to the development workflow, especially for teams not familiar with Git hooks</dd>
+							<dt>Maintenance Overhead:</dt>
+							<dd>As the project evolves, the pre-commit hook scripts may need to be updated to accommodate new tools, standards, or requirements, adding to the maintenance burden.</dd>
+						</dl>
+					</section>
+					<section>
+						
+							<h3>Coding examples</h3>
+							<p style="font-size: 28px;">GitHub Actions provides a continuous integration and continuous delivery (CI/CD) platform that can also execute pre-commit and pre-push checks.</p>
+						    <p style="font-size: 28px;">Configuring pre-commit and pre-push hooks using GitHub Actions involves creating a YAML file that defines the workflow steps, including the checks to be executed. Here’s a step-by-step guide:</p>
+						
+					</section>
+					<section>
+						<h2>Step by step guide:</h2>
+							<dl style="font-size: 25px;">
+								<dt>Create a .github/workflows directory: </dt>
+								<dd>Within your project repository, create a directory named 
+								.github/workflows.
+								This directory will contain the YAML files that define your GitHub Actions workflows.</dd>
+							    <dt>Create a pre-commit.yml file: </dt>
+								<dd>Inside the .github/workflows directory, create a file named pre-commit.yml. This file will define the pre-commit hooks for your project.</dd> 
+								<dt>Define pre-commit steps: </dt> 
+								<dd>In the pre-commit.yml file, define the steps to be executed before committing code. These steps typically involve running linters, tests, or other automated checks.</dd>
+							</dl>
+					</section>
+					<section>
+							<dl style="font-size: 25px;">
+							    <dt>Example of a pre-commit.yml file:</dt>
+								<dd style="font-size: 20px;">
+									<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers><script type="text/template">
+										name: Pre-commit checks
+
+										on:
+										  push:
+											branches: [ main ]
+										  pull_request:
+											branches: [ main ]
+										
+										jobs:
+										  pre-commit:
+											runs-on: ubuntu-latest
+										
+											steps:
+											  - uses: actions/checkout@v3
+										
+											  - name: Install dependencies
+												run: npm install
+										
+											  - name: Run linters
+												run: npm run lint
+										
+											  - name: Run tests
+												run: npm run test
+										
+											  - name: Check formatting
+												run: npm run format-check
+											
+			                        
+									</script></code></pre>
+								</dd>
+								<dt>Commit and push the workflow files: </dt>
+								<dd>Commit the pre-commit.yml and pre-push.yml(recomended) files along with your code changes and push them to the remote repository.</dd>
+							    <dd><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>
+									git add .github/workflows/pre-commit.yml .github/workflows/pre-push.yml 
+                                    git commit -m "Add GitHub Actions workflows for pre-commit and pre-push checks" git push
+								</code></pre></dd>
+							</dl>
+					</section>
+					<section>
+						<h2>Top alternatives for pre-commit</h2>
+						<p style="font-size: 24px;">Pre-commit allows developers to define and run a series of automated checks on their code before committing changes, ensuring code quality and consistency. However, one of its limitations is the lack of support for all languages and tools.
+						</p>
+						<ul style="font-size: 20px;">
+							<li style="margin-bottom: 5px;"><span style="color:aqua;font-weight: 800;">Husky:</span> Husky is a modern solution for Git hooks in Node.js projects. It allows developers to easily set up hooks for various actions like pre-commit, pre-push, and more. Pros: Easy to configure and integrate into Node.js projects. Cons: Limited support for languages other than JavaScript.</li>
+							<li style="margin-bottom: 5px;"><span style="color:aqua;font-weight: 800;">Maven Checkstyle Plugin:</span> Maven Checkstyle Plugin integrates the Checkstyle tool into Maven builds to enforce coding standards. It can be used as a pre-commit hook to ensure code quality. Pros: Seamless integration with Maven projects. Cons: Limited to Java projects using Maven</li>
+							<li style="margin-bottom: 5px;"><span style="color:aqua;font-weight: 800;">Prettier:</span> Prettier is an opinionated code formatter that can be integrated into the pre-commit workflow to automatically format code changes before committing. Pros: Consistent code formatting across the project. Cons: Requires configuring setup for each project.</li>
+							<li><span style="color:aqua;font-weight: 800;">Git Hooks:</span> Git Hooks are customizable scripts that can be triggered at certain points in the Git workflow. They provide flexibility for developers to create custom pre-commit hooks. Pros: Highly customizable for specific project needs. Cons: Requires manual setup and maintenance for each project.</li>
+						</ul>
+					</section>
+					
+					</section>
+					<section>
+						<section>
+							<h3>Git remote</h3>
+							<p  style="font-size: 24px;">The git remote command lets you create, view, and delete connections to other repositories. Remote connections are more like bookmarks rather than direct links into other repositories. Instead of providing real-time access to another repository, they serve as convenient names that can be used to reference a not-so-convenient URL.</p>
+						    <p style="font-size: 24px;">The git remote command is essentially an interface for managing a list of remote entries that are stored in the repository's ./.git/config file. The following commands are used to view the current state of the remote list.</p>
+						</section>
+						<section>
+							<h4>Viewing git remote configurations</h4>
+							<dl style="font-size: 22px;">
+								<dt><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>
+                                  git remote
+								</code></pre></dt>
+								<dd>List the remote connections you have to other repositories.</dd>
+								<dt><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>
+                                   git remote -v
+								</code></pre></dt>
+								<dd>Same but also but include the URL of each connection.</dd>
+							</dl>
+						</section>
+						<section>
+							<h4>Creating and modifying git remote configurations</h4>
+							<p style="font-size: 24px;">The git remote command is also a convenience or 'helper' method for modifying a repo's ./.git/config file. The commands presented below let you manage connections with other repositories. The following commands will modify the repo's /.git/config file. The result of the following commands can also be achieved by directly editing the ./.git/config file with a text editor.</p>
+							<dl style="font-size: 22px;">
+								<dt><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> <script type="text/template">
+									git remote add <name><url>
+								</script></code></pre></dt>
+								<dd>Create a new connection to a remote repository. After adding a remote, you’ll be able to use ＜name＞ as a convenient shortcut for ＜url＞ in other Git commands.</dd>
+							    <dt><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> <script type="text/template">
+									git remote rm <name>
+								</script></code></pre></dt>
+								<dd>Remove connection to a remote repository called name</dd>
+							    <dt><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> <script type="text/template">
+									git remote rename <old_name> <new_name>
+								</script></code></pre></dt>
+								<dd>Rename a remote connection from ＜old-name＞ to ＜new-name＞.</dd>
+							</dl>
+						</section>
+						<section>
+							<h4>The origin Remote</h4>
+							<p style="font-size: 24px;">When you clone a repository with git clone, it automatically creates a remote connection called origin pointing back to the cloned repository. 
+							  This is useful for developers creating a local copy of a central repository, since it provides an easy way to pull upstream changes or publish local commits. 
+							  This behavior is also why most Git-based projects call their central repository origin.</p>
+						</section>
+						<section>
+							<h4>Repository URL's</h4>
+							<p style="font-size: 24px;">Git supports many ways to reference a remote repository. Two of the easiest ways to access a remote repo are via the HTTP and the SSH protocols. HTTP is an easy way to allow anonymous, read-only access to a repository. For example:</p>
+							<pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>http://host/path/to/repo.git</code></pre>
+						    <p style="font-size: 24px;">But, it’s generally not possible to push commits to an HTTP address (you wouldn’t want to allow anonymous pushes anyways). For read-write access, you should use SSH instead:</p>
+						    <pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>ssh://user@host/path/to/repo.git</code></pre>
+						</section>
+						<section>
+							<h4>Git remote commands</h4>
+							<p style="font-size: 24px;">The git remote command is one of many Git commands that takes additional appended 'subcommands'. Below is an examination of the commonly used git remote subcommands.</p>
+						    <table style="font-size: 22px;">
+								<tr>
+									<th>Subcommands</th>
+									<th>Purpose</th>
+									
+								</tr>
+								<tr>
+									<td>-f </td>
+									<td>Will git fetch  immediately after the remote record is created.</td>
+								</tr>
+								<tr>
+									<td>--tags</td>
+									<td>Will git fetch  immediately and import every tag from the remote repository.</td>
+								</tr>
+								<tr>
+									<td><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">GET-URL <NAME></script></code></pre></td>
+									<td>Outputs the URLs for a remote record.</td>
+								</tr>
+								<tr>
+									<td>--push</td>
+									<td>push URLs are queried rather than fetch URLs.</td>
+								</tr>
+								<tr>
+									<td>--all</td>
+									<td>all URLs for the remote will be listed.</td>
+								</tr>
+						
+								<tr>
+									<td><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">PRUNE <NAME></script></code></pre></td>
+									<td>Deletes any local branches for ＜NAME＞ that are not present on the remote repository.</td>
+								</tr>
+								<tr>
+									<td><pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">--dry-run</script></code></pre></td>
+									<td>Will list what branches are set to be pruned, but will not actually prune them.</td>
+								</tr>
+							</table>
+						</section>
+						<section>
+							<h4>Inspecting a Remote</h4>
+							<p style="font-size: 24px;">The show subcommand can be appended to git remote to give detailed output on the configuration of a remote.
+								 This output will contain a list of branches associated with the remote and also the endpoints attached for fetching and pushing.</p>
+								<pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git remote show upstream
+									* remote upstream
+									   Fetch URL: https://bitbucket.com/upstream_user/reponame.git
+									   Push URL: https://bitbucket.com/upstream_user/reponame.git
+									   HEAD branch: main
+									   Remote branches:
+										  main tracked
+										  simd-deprecated tracked
+										  tutorial tracked
+									   Local ref configured for 'git push':
+										  main pushes to main (fast-forwardable)
+									
+									</code></pre>
+							
+						</section>
+						<section>
+							<h4>Fetching and pulling from Git remotes</h4>
+							<p style="font-size: 26px;">Once a remote record has been configured through the use of the git remote command, 
+								the remote name can be passed as an argument to other Git commands to communicate with the remote repo. 
+								Both git fetch, and git pull can be used to read from a remote repository.
+								 Both commands have different operations that are explained in further depth on their respective slides.</p>
+						</section>
+						<section>
+							<h4>Pushing to Git remotes</h4>
+							<p style="font-size: 24px;">The git push command is used to write to a remote repository.
+								<pre data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git push <remote_name> <branch_name></script></code></pre>
+								This example will upload the local state of ＜branch-name＞ to the remote repository specified by ＜remote-name＞
+								</p>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h3>Git fetch</h3>
+							<p style="font-size: 24px;">The git fetch command downloads commits, files, and refs from a remote repository into your local repo. Fetching is what you do when you want to see what everybody else has been working on. It’s similar to svn update in that it lets you see how the central history has progressed, but it doesn’t force you to actually merge the changes into your repository. </p>
+						    <p style="font-size: 24px;">Git isolates fetched content from existing local content; it has absolutely no effect on your local development work. Fetched content has to be explicitly checked out using the git checkout command. This makes fetching a safe way to review commits before integrating them with your local repository.</p>
+						    <p style="font-size: 24px;">When downloading content from a remote repo, git pull and git fetch commands are available to accomplish the task. You can consider git fetch the 'safe' version of the two commands. In fact git
+								fetch will not update your local repo's working state, leaving your current work intact. git pull is the more aggressive alternative; it will download the remote content for the active local branch and immediately execute git merge to create a merge commit for the new remote content. 
+							</p>
+						</section>
+						<section>
+							<h4>How git fetch works with remote branches</h4>
+							<p style="font-size: 18px;">To better understand how git fetch works let us discuss how Git organizes and stores commits.
+							Behind the scenes, in the repository's ./.git/objects directory, Git stores all commits, local and remote. Git keeps remote and local branch commits distinctly separate through the use of branch refs.
+						    Executing the git branch command will output a list of the local branch refs. </p>
+						    <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git branch
+								main
+								feature1
+								debug2
+								Examining the contents of the /.git/refs/heads/ directory would reveal similar output.
+								ls ./.git/refs/heads/
+								main
+								feature1
+								debug2
+								</code></pre>
+							<p style="font-size: 18px;">Remote branches are just like local branches, except they map to commits from somebody else’s repository. Remote branches are prefixed by the remote they belong to so that you don’t mix them up with local branches. </p>
+						    <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git branch -r
+								 origin/main
+								 origin/feature1
+							     origin/debug2
+								 remote-repo/main
+								 remote-repo/other-feature
+								</code></pre>
+						    <p style="font-size: 18px;">You can inspect remote branches with the usual git checkout and git log commands. If you approve the changes a remote branch contains, you can merge it into a local branch with a normal git merge. </p>
+							</section>
+							<section>
+								<h4>Git fetch commands and options</h4>
+								<table style="font-size: 22px;">
+									<tr style="color:aqua;font-weight: 800;">
+										<th>Command</th>
+										<th>Purpose</th>
+									</tr>
+									<tr>
+										<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git fetch <remote></script></code></pre></td>
+										<td>Fetch all of the branches from the repository. This also downloads all of the required commits and files from the other repository.</td>
+									</tr>
+									<tr>
+										<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git fetch <remote> <branch></script></code></pre></td>
+										
+										<td>Same as the above command, but only fetch the specified branch.</td>
+									</tr>
+									<tr>
+										<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git fetch --all</code></pre></td>
+										
+										<td>A power move which fetches all registered remotes and their branches:</td>
+									</tr>
+									<tr>
+										<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git fetch --dry-run</code></pre></td>
+										
+										<td>Will perform a demo run of the command. 
+											It will output examples of actions it will take during the fetch but not apply them.</td>
+									</tr>
+								</table>
+							</section>
+							<section>
+								<h4>Git fetch examples</h4>
+								<h6 style="color:aqua;font-weight: 800;">Git fetch a remote branch</h6>
+								<p style="font-size: 16px;">The following example will demonstrate how to fetch a remote branch and update your local working state to the remote contents. 
+								In this example, let us assume there is a central repo origin from which the local repository has been cloned from using the git clone command. Let us also assume an additional remote repository named coworkers_repo that contains a feature_branch which we will configure and fetch. With these assumptions set let us continue the example.</p>
+								<ul style="font-size: 13px;">
+									<li>Create a reference to the coworker's repo using the repo URL
+										<pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git remote add coworkers_repo git@bitbucket.org:coworker/coworkers_repo.git</code></pre>
+									</li>
+									<li>Pass that remote name to git fetch to download the contents, in order to locally have the contents of coworkers/feature_branch 
+										<pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git fetch coworkers_repo coworkers/feature_branch
+											fetching coworkers/feature_branch
+										</code></pre>
+									</li>
+								    <li>Integrate this into our local working copy by following these steps:
+									   <ul>
+										<li>Checkout the newly downloaded remote branch
+											<pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git checkout coworkers/feature_branch</code></pre>
+										    <p>The output from this checkout operation indicates that we are in a detached HEAD state. This is expected and means that our HEAD ref is pointing to a ref that is not in sequence with our local history.</p>
+										</li>
+										<li> Create a new local branch from that ref. The 'detached HEAD' output shows us how to do this using the git checkout command. This puts updates HEAD to point at the latest remote content and we can continue development on it from this point:
+											<pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git checkout -b local_feature_branch</code></pre>
+											
+										</li>
+									  </ul>
+										
+									</li>
+								</ul>
+							</section>
+							<section>
+								<h5 style="color:aqua;font-weight: 800;">Synchronize origin with git fetch</h5>
+								<p style="font-size: 24px;">The following example walks through the typical workflow for synchronizing your local repository with the central repository's main branch.</p>
+							    <pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git fetch origin</code></pre>
+								<pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>
+									a1e8fb5..45e66a4 main -> origin/main
+									a1e8fb5..9e8ab1c develop -> origin/develop
+									* [new branch] some-feature -> origin/some-feature
+									</code></pre>
+								<p style="font-size: 24px;">git fetch gives you access to the entire branch structure of another repository.</p>
+							</section>
+							<section>
+								<h4>Git fetch summary</h4>
+								<p style="font-size: 24px;">In review, git fetch is a primary command used to download contents from a remote repository. git fetch is used in conjunction with git remote,
+									 git branch, git checkout, and git reset to update a local repository to the state of a remote. The git fetch command is a critical piece of collaborative git work flows. 
+									 git fetch has similar behavior to git pull, 
+									however, git fetch can be considered a safer, nondestructive version.</p>
+							</section>
+					</section>
+					<section>
+						<section>
+							<h3>Git pull</h3>
+							<p style="font-size: 24px;">The git pull command is used to fetch and download content from a remote repository and immediately update the local repository to match that content. 
+								Merging remote upstream changes into your local repository is a common task in Git-based collaboration work flows.</p>
+						</section>
+						<section>
+							<h4>Git pull usage</h4>
+							<p style="font-size: 24px;">The git pull command is actually a combination of two other commands, git fetch followed by git merge. In the first stage of operation git pull will execute a git fetch scoped to the local branch that HEAD is pointed at. Once the content is downloaded, git pull will enter a merge workflow. A new merge commit will be-created and HEAD updated to point at the new commit.</p>
+						</section>
+						<section>
+							<h4>Common Options</h4>
+							<table style="font-size: 22px;">
+								<tr style="color:aqua;font-weight: 800;">
+									<th>Commands</th>
+									<th>Purpose</th>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git pull <remote></script></code></pre></td>
+									<td>Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as git fetch ＜remote＞ followed by git merge origin/＜current-branch＞.</td>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git pull --no-commit <remote></script></code></pre></td>
+									<td>Similar to the default invocation, fetches the remote content but does not create a new merge commit.</td>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git pull --rebase <remote></script></code></pre></td>
+									<td>Same as the previous pull Instead of using git merge to integrate the remote branch with the local one, use git rebase.</td>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">git pull --verbose</script></code></pre></td>
+									<td>Gives verbose output during a pull which displays the content being downloaded and the merge details.</td>
+								</tr>
+							</table>
+						</section>
+						<section>
+							<h4>Git pull and sycing</h4>
+							<p style="font-size: 24px;">git pull is one of many commands that claim the responsibility of 'syncing' remote content. In fact, git pull will download remote content and immediately attempt to change the local state to match that content. This may unintentionally cause the local repository to get in a conflicted state.</p>
+						</section>
+						<section>
+							<h4>Pulling via Rebase</h4>
+							<p style="font-size: 24px;">The --rebase option can be used to ensure a linear history by preventing unnecessary merge commits. Many developers prefer rebasing over merging, since it’s like saying, "I want to put my changes on top of what everybody else has done." </p>
+						    <p style="font-size: 24px;">In fact, pulling with --rebase is such a common workflow that there is a dedicated configuration option for it:</p>
+						    <pre style="font-size: 22px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git config --global branch.autosetuprebase always</code></pre>
+						    <p style="font-size: 24px;">After running that command, all git pull commands will integrate via git rebase instead of git merge.</p>
+						</section>
+					    <section>
+							<h4>Git Pull Examples</h4>
+							<dl style="font-size: 16px;">
+								<dt style="color:aqua;font-weight: 800;">Default Behavior</dt>
+								<dd><pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>git pull </code></pre></dd>
+								<dd>It is equivalent to git fetch origin HEAD and git merge HEAD where HEAD is ref pointing to the current branch.</dd>
+								<dt style="color:aqua;font-weight: 800;">Git pull on remotes</dt>
+								<dd><pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+									<script type="text/template">
+										git checkout new_feature
+                                        git pull <remote repo>
+									</script>
+								</code></pre></dd>
+								<dd>This example first performs a checkout and switches to the branch. Following that, the git pull is executed with being passed. This will implicitly pull down the newfeature branch from . Once the download is complete it will initiate a git merge.</dd>
+								<dt style="color:aqua;font-weight: 800;">Git pull rebase instead of merge</dt>
+								<dd><pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code>
+									git checkout main
+                                    git pull --rebase origin
+                                </code></pre></dd>
+								<dd>Syncronizing with the central repository's main branch using a rebase:
+									This simply moves your local changes onto the top of what everybody else has already contributed.
+								</dd>
+							</dl>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h3>Git push</h3>
+							<p style="font-size: 24px;">The git push command is used to upload local repository content to a remote repository. Pushing is how you transfer commits from your local repository to a remote repo. It's the counterpart to git fetch, but whereas fetching imports commits to local branches, pushing exports commits to remote branches. Remote branches are configured using the git remote command. Pushing has the potential to overwrite changes, caution should be taken when pushing. These issues are discussed below.</p>
+						</section>
+						<section>
+							<h4>Git push usage</h4>
+							<table style="font-size: 20px;">
+								<tr style="color:aqua;font-weight: 800;">
+									<th>Command</th>
+									<th>Purpose</th>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+										<script type="text/template">
+											git push <remote> <branch>
+										</script>
+									</code></pre></td>
+									<td>Push to the specified branch, along with all of the necessary commits and internal objects. This creates a local branch in the destination repository. To prevent you from overwriting commits, Git won’t let you push when it results in a non-fast-forward merge in the destination repository.</td>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+										<script type="text/template">
+											git push <remote> --force
+										</script>
+									</code></pre></td>
+									<td>Same as the above command, but force the push even if it results in a non-fast-forward merge. Do not use the --force flag unless you’re absolutely sure you know what you’re doing.
+										Push all of your local branches to the specified remote.
+									</td>
+								</tr>
+								<tr>
+									<td><pre style="font-size: 12px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+										<script type="text/template">
+											git push <remote> --tags
+										</script>
+									</code></pre></td>
+									<td>Tags are not automatically pushed when you push a branch or use the --all option. The --tags flag sends all of your local tags to the remote repository.</td>
+								</tr>
+							</table>
+						</section>
+						<section>
+							<h4>Force pushing</h4>
+							<p style="font-size: 24px;">Git prevents you from overwriting the central repository’s history by refusing push requests when they result in a non-fast-forward merge. So, if the remote history has diverged from your history, you need to pull the remote branch and merge it into your local one, then try pushing again. This is similar to how SVN makes you synchronize with the central repository via svn update before committing a changeset.
+								</p><p style="font-size: 24px;">The --force flag overrides this behavior and makes the remote repository’s branch match your local one, deleting any upstream changes that may have occurred since you last pulled. The only time you should ever need to force push is when you realize that the commits you just shared were not quite right and you fixed them with a git commit --amend or an interactive rebase. However, you must be absolutely certain that none of your teammates have pulled those commits before using the --force option.
+							</p>
+						</section>
+						<section>
+							<h5>Git push Examples </h5>
+							<dl style="font-size: 14px;">
+								<dt style="color:aqua;font-weight: 800;">Default git push</dt>
+								<dd>The following example describes one of the standard methods for publishing local contributions to the central repository. First, it makes sure your local main is up-to-date by fetching the central repository’s copy and rebasing your changes on top of them. The interactive rebase is also a good opportunity to clean up your commits before sharing them. Then, the git push command sends all of the commits on your local main to the central repository.</dd>
+								<dd>Since we already made sure the local main was up-to-date, this should result in a fast-forward merge, and git push should not complain about any of the non-fast-forward issues discussed above.</dd>
+								<dd>
+									<pre style="font-size: 10px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+										git checkout main
+										git fetch origin main
+										git rebase -i origin/main
+										# Squash commits, fix up commit messages etc.
+										git push origin main
+
+									</code></pre>
+								</dd>
+
+								<dt style="color:aqua;font-weight: 800;">Amended force push</dt>
+								<dd>The --force option must be used to push an amended commit.</dd>
+								<dd>Why?  The git commit command accepts a --amend option which will update the previous commit. A commit is often amended to update the commit message or add new changes. Once a commit is amended a git push will fail because Git will see the amended commit and the remote commit as diverged content. </dd>
+								<dd>
+									<pre style="font-size: 10px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+										# make changes to a repo and git add
+										git commit --amend
+										# update the existing commit message
+										git push --force origin main
+									</code></pre>
+								</dd>
+
+								<dt style="color:aqua;font-weight: 800;">Deleting a remote branch or tag</dt>
+								<dd>Sometimes branches need to be cleaned up for book keeping or organizational purposes. The fully delete a branch, it must be deleted locally and also remotely.</dd>
+								<dd>
+									<pre style="font-size: 10px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+										git branch -D branch_name
+										git push origin :branch_name										
+									</code></pre>
+								</dd>
+							</dl>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h3>Git stash</h3>
+							<p style="font-size: 22px;">git stash temporarily shelves (or stashes) changes you've made to your working copy so you can work on something else, and then come back and re-apply them later on. Stashing is handy if you need to quickly switch context and work on something else, but you're mid-way through a code change and aren't quite ready to commit.</p>
+						</section>
+						<section>
+							<h4>Stashing your work</h4>
+							<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								The command:
+								git stash										
+							</code></pre>
+							<p style="font-size: 22px;">The git stash command takes your uncommitted changes (both staged and unstaged), saves them away for later use, and then reverts them from your working copy. For example:</p>
+                            <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								$ git status
+								On branch main
+								Changes to be committed:
+								
+									new file:   style.css
+								
+								Changes not staged for commit:
+								
+									modified:   index.html
+								
+								$ git stash
+								Saved working directory and index state WIP on main: 5002d47 our new homepage
+								HEAD is now at 5002d47 our new homepage
+								
+								$ git status
+								On branch main
+								nothing to commit, working tree clean
+																		
+							</code></pre>
+							<p style="font-size: 22px;">At this point you're free to make changes, create new commits, switch branches, and perform any other Git operations; then come back and re-apply your stash when you're ready.
+								Note that the stash is local to your Git repository; stashes are not transferred to the server when you push.
+								</p>
+						</section>
+						<section>
+							<h4>Re-applying your stashed changes</h4>
+							<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								The command:
+								git stash pop										
+							</code></pre>
+							<p style="font-size: 22px;">Throught this command you can reapply previously stashed changes and remove them from your stash. For example: </p>
+						    <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								$ git status
+								On branch main
+								nothing to commit, working tree clean
+								$ git stash pop
+								On branch main
+								Changes to be committed:
+								
+									new file:   style.css
+								
+								Changes not staged for commit:
+								
+									modified:   index.html
+								
+								Dropped refs/stash@{0} (32b3aa1d185dfe6d57b3c3cc3b32cbf3e380cc6a)
+																		
+							</code></pre>
+						    <p style="font-size: 22px;">By default, git stash pop will re-apply the most recently created stash: stash@{0}
+								You can choose which stash to re-apply by passing its identifier as the last argument</p>
+								<pre style="font-size: 10px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+									git stash pop stash@{2}										
+								</code></pre>
+							</section>
+						<section>
+							<h4>Alternative methode of re-appling your stashed changes.</h4>
+						    <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								The command:
+								git stash apply										
+							</code></pre>
+							<p style="font-size: 22px;">This way  you can reapply the changes to your working copy and keep them in your stash. This is useful if you want to apply the same stashed changes to multiple branches.</p>
+						    <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								$ git stash apply
+								On branch main
+								Changes to be committed:
+								
+									new file:   style.css
+								
+								Changes not staged for commit:
+								
+									modified:   index.html
+																	
+							</code></pre>
+						</section>
+						<section>
+							<h4>Stashing untracked or ignored files</h4>
+							<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								The command:
+								git stash -u  (or --include-untracked) 										
+							</code></pre>
+							<p>By default git won't stash:</p>
+							<ul>
+								<li>new files in your working copy that have not yet been staged</li>
+								<li>files that have been ignored</li>
+							</ul>
+							<p style="font-size: 22px;">So if we add a third file to our example above, but don't stage it (i.e. we don't run git add), git stash won't stash it.</p>
+						    <p style="font-size: 22px;">Adding the -u option (or --include-untracked) tells git stash to also stash your untracked files:</p>
+						    <p style="font-size: 22px;">You can include changes to ignored files as well by passing the -a option (or --all) when running git stash.</p>
+						</section>
+					    <section>
+							<h4>Managing multiple stashes</h4>
+							<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								The command:
+								git stash save "message"									
+							</code></pre>
+							<p style="font-size: 22px;">You aren't limited to a single stash. You can run git stash several times to create multiple stashes, and then use git stash list to view them. By default, stashes are identified simply as a "WIP" – work in progress – on top of the branch and commit that you created the stash from. After a while it can be difficult to remember what each stash contains</p>
+						    <p style="font-size: 22px;">Therefore it is recommended to add a message to your stash</p>
+						    <pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+								$ git stash save "add style to our site"
+								Saved working directory and index state On main: add style to our site
+								HEAD is now at 5002d47 our new homepage
+								
+								$ git stash list
+								stash@{0}: On main: add style to our site
+								stash@{1}: WIP on main: 5002d47 our new homepage
+								stash@{2}: WIP on main: 5002d47 our new homepage
+																	
+							</code></pre>
+						</section>
+					<section>
+						<h3>View your stash</h3>
+						<h4>Stash diff</h4>
+						<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+							The command:
+							git stash show -p									
+						</code></pre>
+						<p style="font-size: 14px;">You can view a summary of a stash with git stash show and the -p flag offers you the full diff of a stash</p>
+					    <h4>Partial Stash</h4>
+						<pre style="font-size: 10px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+							The command:
+							git stash -p									
+						</code></pre>
+						<p style="font-size: 14px;">You can also choose to stash just a single file, a collection of files, or individual changes from within files. If you pass the -p option (or --patch) to git stash, it will iterate through each changed "hunk" in your working copy and ask whether you wish to stash it:</p>
+					    <pre style="font-size: 10px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code><script type="text/template">
+							$ git stash -p
+							diff --git a/style.css b/style.css
+							new file mode 100644
+							index 0000000..d92368b
+							--- /dev/null
+							+++ b/style.css
+							@@ -0,0 +1,3 @@
+							+* {
+							+  text-decoration: blink;
+							+}
+							Stash this hunk [y,n,q,a,d,/,e,?]? y
+							diff --git a/index.html b/index.html
+							index 9daeafb..ebdcbd2 100644
+							--- a/index.html
+							+++ b/index.html
+							@@ -1 +1,2 @@
+							+<link rel="stylesheet" href="style.css"/>
+							Stash this hunk [y,n,q,a,d,/,e,?]? n
+																
+						</script> </code></pre>
+					</section>
+					<section>
+						<h4>Creating a branch from your stash</h4>
+						<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+							The command:
+							git stash branch add-stylesheet stash@{1}							
+						</code></pre>
+						<p style="font-size: 22px;">If the changes on your branch diverge from the changes in your stash, you may run into conflicts when popping or applying your stash. Instead, you can use git stash branch to create a new branch to apply your stashed changes to</p>
+					</section>
+					<section>
+						<h4>Cleaning up your stash</h4>
+						<pre style="font-size: 14px;" data-id="code-animation" class="hljs javascript" data-trim data-line-numbers><code> 
+							The command:
+							git stash clean	or git stash drop stash@{1}								
+						</code></pre>
+						<p style="font-size: 22px;">If you want to clean all your stash use git stash clean .If you want to clean a particular stach use git stash drop stash@{1}</p>
+					</section>
+					</section>
+					<section>
+						<section>
+							<h3>Git's command which force.</h3>
+							<p style="font-size: 22px;">In Git, the term "force" usually refers to overriding Git's default behavior to enforce actions that would otherwise be prevented due to potential data loss or conflicts. The most common contexts where "force" is used include git push and git reset.</p>
+						</section>
+						
+						<section>
+							<h4>How to use git --force?</h4>
+							<p style="font-size: 22px;">Here's one of the great things about Git: a safe state on the remote repository always goes first! The wonderful consequence of this is that conflicts cannot happen on the remote repository (unlike in other version control systems).</p>
+						    <p style="font-size: 22px;">One of the reasons for this "safety on the remote" is how the "push" operation is designed in Git: you can only upload your own changes with a push if you have previously pulled in any outstanding changes from others. This way, a healthy state on the remote repository for everyone is always guaranteed.</p>
+						    <p style="font-size: 22px;">However, there might come situations where you deliberately want to overwrite the commit history on the remote with your local one. This is when git push --force comes into play.</p>
+						</section>
+						<section>
+							<h4>How does git --force works?</h4>
+							<p style="font-size: 22px;">As described above, Git will normally only allow you to push your changes if you have previously updated your local branch with the latest commits from its remote counterpart. Only when you are up-to-date will you be able to push your own new commits to the remote.</p>
+						    <p style="font-size: 22px;">The --force option for git push allows you to override this rule: the commit history on the remote will be forcefully overwritten with your own local history.</p>
+						    <p style="font-size: 22px;">This is a rather dangerous process, because it's very easy to overwrite (and thereby lose) commits from your colleagues. Also, even if no one else has pushed anything to the remote repository in the meantime, your colleagues might still have based their new work on the old commit history. Your "force push" changes this history and means theirs is not in line with the new one anymore.</p>
+						</section>
+						<section>
+							<h4>Safty rules and Alternatives of git --force</h4>
+							<dl style="font-size: 22px;">
+								<dt>Don't use it on shared history. </dt>
+								<dd>Whenever you have pushed commits to a remote branch that is shared with your team, you should try NOT to use force push. If, on the other hand, you were working on a feature branch that only you yourself are using, then of course feel free to step on the gas and use the --force option.</dd>
+								<dt>Use git revert instead. </dt>
+								<dd> The basic need for a tool to correct a mistake that you've already pushed, of course, remains. However, consider using a tool that does NOT rewrite commit history, like git revert for example. This provides a much less obtrusive way to undo a mistake.</dd>
+								<dt>Use --force-with-lease instead </dt>
+								<dd>The push command has another option called --force-with-lease. This helps to make sure that you are at least not overwriting work from others: it will present an error message and refuse to push if the remote was modified since you last fetched.</dd>
+
+							</dl>
+						</section>
+					</section>
+					<section>
+						<section>
+							<h3>Gitignore</h3>
+							<p style="font-size: 26px;">The .gitignore is the most commonly used method for excluding files from Git.</p>
+							<p style="font-size: 26px;">Lets learn about it!</p>  
+						</section>
+						<section>
+							<h2>The most inportant use Case</h2>
+							<table style="font-size: 22px;">
+								<tr>
+									<th style="color:aqua;font-weight: 800;">.gitignore entry</th>
+									<th style="color:aqua;font-weight: 800;">Ignores every…</th>
+								</tr>
+								<tr>
+									<td>target/</td>
+									<td>…folder (due to the trailing /) recursively</td>
+								</tr>
+								<tr>
+									<td>target</td>
+									<td>…file or folder named target recursively</td>
+								</tr>
+								<tr>
+									<td>/target</td>
+									<td>…file or folder named target in the top-most directory (due to the leading /)</td>
+								</tr>
+								<tr>
+									<td>/target/</td>
+									<td>…folder named target in the top-most directory (leading and trailing /)</td>
+								</tr>
+								<tr>
+									<td>*.class</td>
+									<td>…every file or folder ending with .class recursively</td>
+								</tr>
+							</table>
+						</section>
+						<section>
+							<h2>Advanced Use Cases</h2>
+							<table style="font-size: 22px;">
+								<tr>
+									<th style="color:aqua;font-weight: 800;">.gitignore entry</th>
+									<th style="color:aqua;font-weight: 800;">Ignores every…</th>
+								</tr>
+								<tr>
+									<td>#comment</td>
+									<td>…nothing, this is a comment (first character is a #)</td>
+								</tr>
+								<tr>
+									<td>\#comment</td>
+									<td>…every file or folder with name #comment (\ for escaping)</td>
+								</tr>
+								<tr>
+									<td>target/logs/</td>
+									<td>…every folder named logs which is a subdirectory of a folder named target</td>
+								</tr>
+								<tr>
+									<td>target/*/logs/</td>
+									<td>…every folder named logs two levels under a folder named target (* doesn’t include /)</td>
+								</tr>
+								<tr>
+									<td>target/**/logs/</td>
+									<td>…every folder named logs somewhere under a folder named target (** includes /)</td>
+								</tr>
+								<tr>
+									<td>*.py[co]</td>
+									<td>…file or folder ending in .pyc or .pyo. However, it doesn’t match .py</td>
+								</tr>
+								<tr>
+									<td>!README.md</td>
+									<td>Doesn’t ignore any README.md file even if it matches an exclude pattern, e.g. *.md.
+                                 NOTE This does not work if the file is located within a ignored folder.</td>
+								</tr>
+							</table>
+						</section>
+						<section>
+							<h2>Wait there is more!</h2>
+							<p style="font-size: 24px;">There are several locations where Git looks for ignore files.
+								 Besides looking in the root folder of a Git project, Git also checks if there is a .gitignore in every subdirectory. This way you can ignore files on a finer grained level if different folders need different rules.</p>
+						    <p style="font-size: 24px;">Moreover, you can define repository specific rules which are not committed to the Git repository, i.e. these are specific to your local copy. These rules go into the file .git/info/exclude which
+								 is created by default in every Git repository with no entries.</p>
+						    <p style="font-size: 24px;">One useful file you can define yourself is a global ignore file. It doesn’t have a default location or file name. You can define it yourself with the following command:
+								<pre data-id="code-animation" style="font-size: larger;"><code>git config --global core.excludesfile ~/.gitignore_global</code></pre>
+							</p>
+							<p style="font-size: 24px;">Every rule which goes into this file applies to every Git repository in your user account. This is especially useful for OS-specific files like 
+								.DS_Store on MacOS or thumbs.db on Windows.</p>
+						</section>
+						<section>
+							<h2>Gitignore's pros</h2>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Simplifies Version Control:</dt>
+								<dd>.gitignore helps prevent unnecessary files, such as temporary or build files, from being tracked in the repository, keeping the repository clean and focused on source code.</dd>
+								<dt style="color:aqua;font-weight: 800;">Reduces Repository Size:</dt>
+								<dd>By ignoring large or numerous files that don't need to be versioned, .gitignore helps keep the repository size manageable and reduces the amount of data that needs to be transferred when cloning or fetching changes.</dd>
+								<dt style="color:aqua;font-weight: 800;">Improves Performance:</dt>
+								<dd>Ignoring files that don’t need to be tracked can improve Git performance, particularly in large repositories, by reducing the number of files Git needs to manage.</dd>
+								<dt style="color:aqua;font-weight: 800;">Avoids Sensitive Information:</dt>
+								<dd>.gitignore can be used to prevent sensitive or secret files (such as configuration files with credentials) from being committed to the repository, reducing security risks.</dd>
+								<dt style="color:aqua;font-weight: 800;">Customizable: </dt>
+								<dd>You can customize .gitignore to fit the needs of your specific project by adding rules for different file types, directories, or patterns. This allows for flexibility in managing what gets tracked.</dd>
+							</dl>
+						</section>
+						<section>
+							<h2>Gitignore's cons</h2>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Not a Catch-All Solution:</dt>
+								<dd>.gitignore only affects files that are not already tracked by Git. If a file was tracked before being added to .gitignore, it will continue to be tracked unless explicitly removed with git rm --cached.</dd>
+								<dt style="color:aqua;font-weight: 800;">Global vs.Local Scope:</dt>
+								<dd>.gitignore is usually repository-specific. If you need to ignore files across multiple repositories, you have to manage .gitignore files for each repository separately or use a global ignore file.</dd>
+								<dd>If you have a config file like web.config that needs to be TRACKED by Git, but want LOCAL CHANGES IGNORED, that situation cannot be solved with .gitignore.</dd>
+								<dt style="color:aqua;font-weight: 800;">Shared with Others:</dt>
+								<dd>When you commit .gitignore to a shared repository, changes to ignore rules will affect all collaborators. This can be problematic if different team members have different needs for ignored files.</dd>
+							</dl>
+						</section>
+						<section>
+							<h3>Alternatives of .gitignore</h3>
+							<p>While .gitignore is the most commonly used method for excluding files from Git, there are alternatives and complementary methods that provide additional flexibility for managing file tracking in your repositories.
+							Each has its own use cases and can be combined based on your needs.</p>
+					        
+						</section>
+						<section>
+							<h4>Usage of .git/info/exclude (LOCALY UNTRACKED)</h4>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Purspose</dt>
+								<dd>This method is very similar to .gitignore method, just file .git/info/exclude is not itself part of the repository so its influence is local. This method is planned to be applied to files that you want LOCALLY UNTRACKED.</dd>
+								<dt style="color:aqua;font-weight: 800;">Use case</dt>
+								<dd>Useful for personal ignores that you don't want to commit or share with others.</dd>
+								<dt style="color:aqua;font-weight: 800;">Location</dt>
+								<dd>You need to add .git/info/exclude file and add to that file files you want to be ignored. The format is the same as the format of .gitignore file.</dd>
+								<dt style="color:aqua;font-weight: 800;">Example</dt>
+								<dd><pre data-id="code-animation" style="font-size: larger;"><code>Copy code
+									# .git/info/exclude
+									*.log
+									temp/
+									</code></pre></dd>
+							</dl>
+						</section>
+						<section>
+							<h4>Usage of Globale git ignore</h4>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Purspose</dt>
+								<dd>Allows you to define ignore rules for all repositories on your system.</dd>
+								<dt style="color:aqua;font-weight: 800;">Use case</dt>
+								<dd>Handy for ignoring files that are commonly untracked across various repositories, like IDE configurations.</dd>
+								<dt style="color:aqua;font-weight: 800;">Location</dt>
+								<dd>Create a global ignore file, e.g., ~/.gitignore_global.
+								<dd>Configure Git to use this file:</dd>
+								<dd><pre data-id="code-animation" style="font-size: larger;">git config --global core.excludesfile ~/.gitignore_global<code></code></pre>
+
+							</dl>
+						</section>
+						<section>
+							<h4>Usage of .gitignore in Subdirectories</h4>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Purspose</dt>
+								<dd>To specify ignore rules in spesific subdirectories</dd>
+								<dt style="color:aqua;font-weight: 800;">Use case</dt>
+								<dd>Very useful for complex projects where different directories need different ignore rules</dd>
+								<dt style="color:aqua;font-weight: 800;">Location</dt>
+								<dd>Place .gitignore files in the respective subdirectories</dd>
+								<dt style="color:aqua;font-weight: 800;">Example</dt>
+								<dd><pre data-id="code-animation" style="font-size: larger;"><code># subdir/.gitignore
+									*.tmp
+								</code></pre></dd>
+							</dl>
+						</section>
+						<section>
+							<h4>Usage of git clean</h4>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Purspose</dt>
+								<dd>Clean the working directory by removing untracked files.</dd>
+								<dt style="color:aqua;font-weight: 800;">Use case</dt>
+								<dd>Helpful for cleaning up files that should not be committed.</dd>
+								<dt style="color:aqua;font-weight: 800;">Example</dt>
+								<dd><pre data-id="code-animation" style="font-size: larger;"><code>
+									git clean -f -d
+                                     o	-f forces the clean operation.
+                                     o	-d removes untracked directories.
+								
+								</code></pre></dd>
+							</dl>
+						</section>
+						<section>
+							<h4>Usage of skip-worktree </h4>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Purpose</dt>
+								<dd>When you need to explicitly tell Git not to check if the file has been changed.</dd>
+								<dt style="color:aqua;font-weight: 800;">Use case</dt>
+								<dd>This method is planned to be applied to files that you want TRACKED, LOCAL CHANGES IGNORED. </dd>
+							    <dt style="color:aqua;font-weight: 800;">Commands needed for this method</dt>
+								<dd>
+									<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers><script type="text/template">
+										To ignore local changes to tracked files:
+									git update-index --skip-worktree  [<file>...]
+									
+									To track local changes again:
+									git update-index --no-skip-worktree [<file>...]
+									
+									To list all files marked with skip-worktree:
+									git ls-files -v | grep ^S
+			 
+								</script></code></pre>
+							</dl>
+						</section>
+						<section>
+							<h4>Usage of assume-unchanged - <span style="color:red">NOT RECOMMENDED</span> </h4>
+							<dl style="font-size: 22px;">
+								<dt style="color:aqua;font-weight: 800;">Purpose</dt>
+								<dd>The assume-unchanged option was envisioned as a performance aid but is often mentioned in the context of workarounds to ignore files</dd>
+								<dt style="color:aqua;font-weight: 800;">Use case</dt>
+								<dd>This method is planned to be applied to files that you want TRACKED, LOCAL CHANGES IGNORED. You explicitly tell Git not to check if the file has been changed. </dd>
+							    <dt style="color:aqua;font-weight: 800;">Commands needed for this method</dt>
+									<dd><pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers><script type="text/template">
+										To ignore local changes to tracked files:
+										git update-index --assume-unchanged [<file>...]
+										
+										To track local changes again:
+										git update-index --no-assume-unchanged [<file>...]
+										
+										To list all files assumed unchanged:
+										git ls-files -v | grep '^[[:lower:]]'
+			 
+								</script></code></pre></dd>
+							</dl>
+						</section>
+
+					</section>
+				</section>
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+
+		</script>
+	</body>
+</html>
